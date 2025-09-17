@@ -1,0 +1,60 @@
+/* General reset */
+body {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 20px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+/* Container box */
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 40px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+/* Headings */
+h1 {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 0.5em;
+}
+
+h2 {
+  color: #006EB6;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.1em;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+/* Paragraphs */
+main p {
+  text-align: left;
+  margin-bottom: 1em;
+}
+
+/* Ordered list */
+ol {
+  text-align: left;
+  padding-left: 20px;
+}
+
+ol li {
+  margin-bottom: 0.75em;
+}
+
+/* Footer logo */
+footer img {
+  margin-top: 20px;
+  width: 150px;
+  height: auto;
+}
