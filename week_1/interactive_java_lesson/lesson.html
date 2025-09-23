@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Interactive JS Lesson — Variables, Functions & DOM</title>
+  <style>
+    :root{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#0f172a}
+    body{margin:12px;background:#f8fafc}
+    header{display:flex;gap:12px;align-items:center}
+    h1{font-size:20px;margin:0}
+    p.lead{margin:6px 0 18px;color:#475569}
+    .grid{display:grid;grid-template-columns:1fr;gap:14px;max-width:1100px}
+    .card{background:white;border-radius:10px;padding:14px;box-shadow:0 6px 24px rgba(2,6,23,0.06)}
+    pre{background:#0b1220;color:#cbd5e1;padding:12px;border-radius:8px;overflow:auto}
+    button.run{margin-top:8px;padding:8px 12px;border-radius:8px;border:none;background:#0ea5a4;color:white;cursor:pointer}
+    .row{display:flex;gap:12px;flex-wrap:wrap}
+    .output{background:#0f172a;color:#e2e8f0;padding:10px;border-radius:8px;min-height:40px}
+    label{font-weight:600;color:#334155}
+    .demo-area{padding:10px;border-radius:8px;background:#f1f5f9}
+    .controls{display:flex;gap:8px;align-items:center}
+    code{background:#eef2ff;padding:2px 6px;border-radius:6px}
+    .small{font-size:13px;color:#64748b}
+    .flex-between{display:flex;justify-content:space-between;align-items:center}
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Interactive JavaScript Lesson</h1>
+      <p class="lead">Live examples for variables, functions (including callbacks), and DOM manipulation. Edit & run the snippets.</p>
+    </div>
+  </header>
+
+  <main class="grid">
+
+    <!-- VARIABLES -->
+    <section class="card" id="variables">
+      <div class="flex-between"><h2>Variables: <small class="small">let, const, var</small></h2></div>
+      <pre id="code-variables">// Try editing values and re-run
+let name = 'Matthew';
+const born = 2003;
+var car = 'HHR SS';
+
+console.log('name ->', name);
+console.log('born ->', born);
+console.log('car ->', car);
+
+// reassign let / var
+name = 'Alex';
+car = 'Civic';
+console.log('after reassign ->', name, car);
+
+// trying to reassign const will throw (uncomment to test)
+// born = 2000;</pre>
+      <div class="row">
+        <button class="run" data-run="variables">Run Variables Example</button>
+        <div class="output" id="out-variables">Output will appear here</div>
+      </div>
+    </section>
+
+    <!-- FUNCTIONS -->
+    <section class="card" id="functions">
+      <h2>Functions & Callbacks</h2>
+      <pre id="code-functions">// Declaration
+function greet(name){
+  return 'Hello, ' + name + '!';
+}
+
+// Expression
+const add = function(a,b){ return a + b; };
+
+// Arrow
+const mult = (a,b) => a * b;
+
+// Callback example
+function doMath(a,b,fn){
+  return fn(a,b);
+}
+
+console.log(greet('Matthew'));
+console.log('add 2+3 ->', add(2,3));
+console.log('mult 4*5 ->', mult(4,5));
+console.log('callback sum ->', doMath(6,7, (x,y) => x+y));
+</pre>
+      <div class="row">
+        <button class="run" data-run="functions">Run Functions Example</button>
+        <div class="output" id="out-functions">Output will appear here</div>
+      </div>
+    </section>
+
+    <!-- ANONYMOUS & CALLBACKS -->
+    <section class="card" id="callbacks">
+      <h2>Anonymous functions & Callbacks</h2>
+      <pre id="code-callbacks">// Anonymous used inline
+setTimeout(function(){ console.log('Anonymous after 1s'); }, 1000);
+
+// Arrow anonymous
+setTimeout(() => console.log('Arrow after 1.2s'), 1200);
+
+// forEach callback
+['red','green','blue'].forEach(color => console.log('color ->', color));
+</pre>
+      <div class="row">
+        <button class="run" data-run="callbacks">Run Callbacks Example</button>
+        <div class="output" id="out-callbacks">Note: uses timers and console logs</div>
+      </div>
+    </section>
+
+    <!-- DOM MANIPULATION -->
+    <section class="card" id="dom">
+      <h2>DOM: add / remove / attributes</h2>
+      <p class="small">This area demonstrates creating elements, removing them, and changing attributes & classes.</p>
+
+      <div class="demo-area" id="demo-area">
+        <div id="list-container">
+          <h3 id="demo-title">Fruits</h3>
+          <ul id="fruit-list">
+            <li>Apple</li>
+            <li>Banana</li>
+          </ul>
+        </div>
+        <div style="margin-top:10px" class="controls">
+          <input id="new-item" placeholder="new list item" />
+          <button id="add-item">Add Item</button>
+          <button id="remove-first">Remove First</button>
+          <button id="toggle-class">Toggle Highlight</button>
+          <button id="change-attr">Change Title Attr</button>
+        </div>
+      </div>
+
+      <pre id="code-dom">// create a new &lt;li&gt; and append
+const ul = document.getElementById('fruit-list');
+const li = document.createElement('li');
+li.textContent = 'Cherry';
+ul.appendChild(li);
+
+// remove first child
+// ul.removeChild(ul.firstElementChild);
+
+// attributes and classes
+const title = document.getElementById('demo-title');
+title.setAttribute('data-demo', 'true');
+console.log('title data-demo ->', title.getAttribute('data-demo'));
+
+// toggle class
+// title.classList.toggle('highlighted');
+</pre>
+      <div class="row">
+        <button class="run" data-run="dom">Run DOM Example (console output)</button>
+        <div class="output" id="out-dom">Open the browser console to see DOM logs, or use the controls above.</div>
+      </div>
+
+      <style>
+        .highlighted{background:linear-gradient(90deg,#fde68a,#fef3c7);padding:4px;border-radius:6px}
+      </style>
+    </section>
+
+    <!-- WHY DO THIS -->
+    <section class="card">
+      <h2>Why manipulate the DOM?</h2>
+      <p>To make pages interactive: update content without reloading, respond to user actions, show/hide UI, load data from servers (AJAX / fetch), and improve user experience.</p>
+      <p class="small">Try the examples above: edit code, click <code>Run</code>, and watch the output or the page change.</p>
+    </section>
+
+    <!-- Console area for safe output capture -->
+    <section class="card">
+      <h2>Console (captured)</h2>
+      <div class="output" id="capture">No logs yet — run an example.</div>
+    </section>
+
+  </main>
+
+  <script>
+    // small helper: safely run code from the <pre> blocks and capture console
+    (function(){
+      const capture = document.getElementById('capture');
+      function write(msg){ capture.innerHTML += msg + '<br>' }
+
+      // intercept console.log for the page (restore after)
+      const originalLog = console.log;
+      function runCode(code, outEl){
+        // capture logs to a temp buffer
+        const logs = [];
+        const tempLog = function(){
+          const line = Array.from(arguments).map(a => {
+            try{ return JSON.stringify(a); }catch(e){ return String(a); }
+          }).join(' ');
+          logs.push(line);
+        };
+        console.log = tempLog;
+        try{
+          // create a function wrapper so variables don't leak to window
+          const fn = new Function(code);
+          fn();
+        }catch(err){ logs.push('Error: ' + err.message); }
+        console.log = originalLog;
+
+        // show in local output element
+        outEl.innerHTML = logs.length ? logs.join('<br>') : 'No logs';
+        // append to main capture
+        write('<strong>[' + outEl.id + ']</strong>');
+        logs.forEach(l => write(l));
+      }
+
+      // wire Run buttons
+      document.querySelectorAll('button.run').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const key = btn.getAttribute('data-run');
+          const codeEl = document.getElementById('code-' + key);
+          const outEl = document.getElementById('out-' + key);
+          runCode(codeEl.textContent, outEl);
+        });
+      });
+
+      // DOM controls wiring
+      document.getElementById('add-item').addEventListener('click', () => {
+        const val = document.getElementById('new-item').value || 'New item';
+        const li = document.createElement('li'); li.textContent = val;
+        document.getElementById('fruit-list').appendChild(li);
+        write('Added item: ' + val);
+      });
+      document.getElementById('remove-first').addEventListener('click', () => {
+        const ul = document.getElementById('fruit-list');
+        if(ul.firstElementChild){
+          const txt = ul.firstElementChild.textContent;
+          ul.removeChild(ul.firstElementChild);
+          write('Removed first item: ' + txt);
+        } else write('List empty');
+      });
+      document.getElementById('toggle-class').addEventListener('click', () => {
+        document.getElementById('demo-title').classList.toggle('highlighted');
+        write('Toggled highlight on title');
+      });
+      document.getElementById('change-attr').addEventListener('click', () => {
+        const t = document.getElementById('demo-title');
+        const next = (t.getAttribute('data-state') === 'x') ? 'y' : 'x';
+        t.setAttribute('data-state', next);
+        t.setAttribute('title', 'State=' + next);
+        write('Changed title attributes: data-state=' + next);
+      });
+
+      // run a small auto example so user sees something
+      document.querySelector('button.run[data-run="variables"]').click();
+
+    })();
+  </script>
+</body>
+</html>
