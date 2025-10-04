@@ -70,8 +70,9 @@ nav {
   width: 250px;
   height: 250px;
   object-fit: cover;
-  border: 9px solid var(#fff);
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.6);
+  border: 6px solid var(--text-light); 
+  border-radius: 0%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
 }
 
 footer {
