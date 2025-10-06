@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Branching & Events Practice</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: #f8fafc;
+    margin: 0;
+    padding: 20px;
+  }
+  h1, h2 {
+    text-align: center;
+    color: #38bdf8;
+  }
+  section {
+    background: #1e293b;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 700px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  }
+  button {
+    background: #38bdf8;
+    border: none;
+    color: #0f172a;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+  }
+  button:hover {
+    background: #7dd3fc;
+  }
+  input {
+    padding: 8px;
+    border-radius: 6px;
+    border: none;
+    width: 80%;
+    margin-right: 10px;
+  }
+  pre {
+    background: #0f172a;
+    padding: 10px;
+    border-radius: 8px;
+    color: #facc15;
+  }
+  .feedback {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<h1>🧠 JavaScript Branching & Events Practice</h1>
+
+<section>
+  <h2>Part 1: Branching Practice</h2>
+  <p>Enter your age below and click "Check Age" to see how JavaScript uses <code>if</code> statements to make decisions:</p>
+  <input type="number" id="ageInput" placeholder="Enter your age">
+  <button id="checkAgeBtn">Check Age</button>
+  <div class="feedback" id="ageFeedback"></div>
+
+  <pre>
+// Example:
+let age = 18;
+if (age < 18) {
+  console.log("You are a minor");
+} else {
+  console.log("You are an adult");
+}
+  </pre>
+</section>
+
+<section>
+  <h2>Part 2: Color Switch Challenge</h2>
+  <p>Type a color (<strong>red</strong>, <strong>yellow</strong>, or <strong>green</strong>) and click "Check Color" to see how <code>switch</code> works.</p>
+  <input type="text" id="colorInput" placeholder="Enter color">
+  <button id="checkColorBtn">Check Color</button>
+  <div class="feedback" id="colorFeedback"></div>
+
+  <pre>
+switch (color) {
+  case "red":
+    console.log("Stop!");
+    break;
+  case "yellow":
+    console.log("Caution!");
+    break;
+  case "green":
+    console.log("Go!");
+    break;
+  default:
+    console.log("Unknown color");
+}
+  </pre>
+</section>
+
+<section>
+  <h2>Part 3: Event Practice</h2>
+  <p>Click the button or press a key to trigger events below!</p>
+  <button id="eventButton">Click Me!</button>
+  <div class="feedback" id="eventFeedback"></div>
+  <p><em>Try pressing any key on your keyboard too!</em></p>
+
+  <pre>
+// Example:
+button.addEventListener("click", () => {
+  console.log("Button clicked!");
+});
+
+document.addEventListener("keydown", (e) => {
+  console.log("You pressed: " + e.key);
+});
+  </pre>
+</section>
+
+<script>
+document.getElementById("checkAgeBtn").addEventListener("click", () => {
+  const age = Number(document.getElementById("ageInput").value);
+  const feedback = document.getElementById("ageFeedback");
+
+  if (!age) {
+    feedback.textContent = "Please enter your age.";
+    feedback.style.color = "#f87171";
+  } else if (age < 18) {
+    feedback.textContent = "You are a minor 👶";
+    feedback.style.color = "#facc15";
+  } else if (age === 18) {
+    feedback.textContent = "You just became an adult 🎉";
+    feedback.style.color = "#34d399";
+  } else {
+    feedback.textContent = "You are an adult 💪";
+    feedback.style.color = "#34d399";
+  }
+});
+
+document.getElementById("checkColorBtn").addEventListener("click", () => {
+  const color = document.getElementById("colorInput").value.toLowerCase();
+  const feedback = document.getElementById("colorFeedback");
+
+  switch (color) {
+    case "red":
+      feedback.textContent = "Stop! 🛑";
+      feedback.style.color = "#f87171";
+      break;
+    case "yellow":
+      feedback.textContent = "Caution! ⚠️";
+      feedback.style.color = "#facc15";
+      break;
+    case "green":
+      feedback.textContent = "Go! ✅";
+      feedback.style.color = "#34d399";
+      break;
+    default:
+      feedback.textContent = "Unknown color 🤔";
+      feedback.style.color = "#a5b4fc";
+  }
+});
+
+document.getElementById("eventButton").addEventListener("click", () => {
+  document.getElementById("eventFeedback").textContent = "Button clicked! 🖱️";
+  document.getElementById("eventFeedback").style.color = "#38bdf8";
+});
+
+document.addEventListener("keydown", (e) => {
+  document.getElementById("eventFeedback").textContent = "You pressed: " + e.key + " ⌨️";
+  document.getElementById("eventFeedback").style.color = "#facc15";
+});
+</script>
+
+</body>
+</html>
