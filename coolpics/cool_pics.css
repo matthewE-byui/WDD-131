@@ -142,3 +142,40 @@ a:visited {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
+/* ===== MENU TOGGLE ===== */
+.hide {
+  display: none;
+}
+
+/* ===== MODAL (dialog) STYLES ===== */
+dialog {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: none;
+  padding: 0;
+  z-index: 10;
+}
+
+dialog img {
+  display: block;
+  width: 90%;
+  max-height: 100%;
+  margin: 20vh auto 0;
+  object-fit: contain;
+  border: 4px solid white;
+  border-radius: 8px;
+}
+
+.close-viewer {
+  position: absolute;
+  top: 20vh;
+  right: 5%;
+  background: white;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+}
