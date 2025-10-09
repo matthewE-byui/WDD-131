@@ -86,8 +86,12 @@ header h1 {
   margin-top: 1rem;
   justify-items: center; /* Centers each figure horizontally */
   align-items: center;   /* Centers vertically in each cell */
+  cursor: pointer;  /* Indicate clickable images */
+  transition: transform 0.3s  ease; /* Smooth zoom effect */
 }
-
+.gallery img:hover {
+  transform: scale(1.03); /* optional: slight zoom effect on hover */
+}
 .gallery img {
   width: 250px;
   height: 250px;
