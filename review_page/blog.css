@@ -40,10 +40,10 @@ nav {
 
 .main-nav {
   list-style: none;
-  display: grid;
-  grid-template-columns: 100px 100px 100px;
-  justify-content: end;
-  justify-items: end;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto;
   max-width: 700px;
   padding: 0;
