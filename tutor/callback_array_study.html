@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript Study: Callbacks & Array Methods</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #eee;
+      margin: 0;
+      padding: 20px;
+    }
+    h1, h2 {
+      color: #00d4ff;
+    }
+    .section {
+      background: #1b1b1b;
+      padding: 15px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px #00d4ff33;
+    }
+    button {
+      background: #00d4ff;
+      color: #111;
+      border: none;
+      padding: 10px 15px;
+      margin: 5px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    button:hover {
+      background: #00a0c9;
+    }
+    pre {
+      background: #000;
+      color: #0f0;
+      padding: 10px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: "Courier New", monospace;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧠 JavaScript Practice: Callback Functions & Array Methods</h1>
+  <p>Click the buttons below to run examples and learn how each concept works.</p>
+
+  <!-- CALLBACKS -->
+  <div class="section">
+    <h2>🔁 Callback Functions</h2>
+    <button onclick="runGreeting()">Run Greeting Example</button>
+    <button onclick="runAsyncCallback()">Run Async Example</button>
+    <pre id="callbackOutput">Output will appear here...</pre>
+  </div>
+
+  <!-- ARRAY METHODS -->
+  <div class="section">
+    <h2>📊 Array Methods</h2>
+    <button onclick="runArrayExamples()">Run Array Methods</button>
+    <pre id="arrayOutput">Output will appear here...</pre>
+  </div>
+
+  <!-- COMBINED -->
+  <div class="section">
+    <h2>⚙️ Combining Callbacks + Arrays</h2>
+    <button onclick="runComboExample()">Run Combined Example</button>
+    <pre id="comboOutput">Output will appear here...</pre>
+  </div>
+
+  <script>
+    // =========================
+    // CALLBACK FUNCTIONS
+    // =========================
+
+    function runGreeting() {
+      const output = document.getElementById("callbackOutput");
+      output.textContent = ""; // clear
+
+      function greetUser(name, callback) {
+        output.textContent += `👋 Hello, ${name}!\n`;
+        callback();
+      }
+
+      function sayGoodbye() {
+        output.textContent += "👋 Goodbye! Have a great day!\n";
+      }
+
+      greetUser("Matthew", sayGoodbye);
+    }
+
+    function runAsyncCallback() {
+      const output = document.getElementById("callbackOutput");
+      output.textContent = "📡 Fetching data...\n";
+
+      function fetchData(callback) {
+        setTimeout(() => {
+          const data = ["apple", "banana", "cherry"];
+          output.textContent += "✅ Data fetched!\n";
+          callback(data);
+        }, 1500);
+      }
+
+      fetchData(function (fruits) {
+        output.textContent += "🍓 Fruits received: " + fruits.join(", ") + "\n";
+      });
+    }
+
+    // =========================
+    // ARRAY METHODS
+    // =========================
+
+    function runArrayExamples() {
+      const numbers = [1, 2, 3, 4, 5];
+      const output = document.getElementById("arrayOutput");
+      output.textContent = "";
+
+      const squared = numbers.map(n => n ** 2);
+      const even = numbers.filter(n => n % 2 === 0);
+      const total = numbers.reduce((sum, n) => sum + n, 0);
+      const firstOverThree = numbers.find(n => n > 3);
+
+      output.textContent += `Numbers: ${numbers.join(", ")}\n`;
+      output.textContent += `Squares (map): ${squared.join(", ")}\n`;
+      output.textContent += `Even numbers (filter): ${even.join(", ")}\n`;
+      output.textContent += `Sum (reduce): ${total}\n`;
+      output.textContent += `First number over 3 (find): ${firstOverThree}\n`;
+      output.textContent += "All numbers (forEach):\n";
+      numbers.forEach(n => output.textContent += `  ${n}\n`);
+    }
+
+    // =========================
+    // COMBINED EXAMPLE
+    // =========================
+
+    function runComboExample() {
+      const output = document.getElementById("comboOutput");
+      output.textContent = "";
+
+      function processNumbers(nums, callback) {
+        const tripled = nums.map(n => n * 3);
+        callback(tripled);
+      }
+
+      processNumbers([2, 4, 6, 8], function(result) {
+        output.textContent += `Tripled numbers: ${result.join(", ")}\n`;
+      });
+    }
+  </script>
+</body>
+</html>
