@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Array Methods Study Tool</title>
+  <script src="arrays.js" defer></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 2em;
+      color: #222;
+    }
+    h1 {
+      text-align: center;
+      color: #007acc;
+    }
+    button {
+      background-color: #007acc;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 0.6em 1.2em;
+      margin: 0.5em;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #005a99;
+    }
+    .output {
+      background: white;
+      padding: 1em;
+      margin: 1em 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    ul {
+      list-style-type: disc;
+      padding-left: 1.5em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Array Methods Interactive Tool</h1>
+
+  <section>
+    <h2>Activity 1: Map</h2>
+    <button onclick="runMap()">Run Map</button>
+    <ul id="myList" class="output"></ul>
+  </section>
+
+  <section>
+    <h2>Activity 2 & 3: Grades → GPA (Map + Reduce)</h2>
+    <button onclick="runGPA()">Run GPA Calculation</button>
+    <p id="gradesOutput" class="output"></p>
+  </section>
+
+  <section>
+    <h2>Activity 4: Filter</h2>
+    <button onclick="runFilter()">Run Filter</button>
+    <p id="filterOutput" class="output"></p>
+  </section>
+
+  <section>
+    <h2>Activity 5: indexOf</h2>
+    <button onclick="runIndexOf()">Run indexOf</button>
+    <p id="luckyOutput" class="output"></p>
+  </section>
+</body>
+</html>
