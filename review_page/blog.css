@@ -115,3 +115,27 @@ footer {
 .skiptocontent a:focus {
   top: 0;
 }
+/* ===== Article Styling for Part 2 ===== */
+
+.book-details {
+  text-align: right;
+  border-right: 2px solid #EFC69B;
+  padding-right: 1rem;
+  margin-right: 1rem;
+  line-height: 1.3;
+  font-size: 1rem;
+}
+
+.book-content h2 {
+  margin-top: 0; /* align title with date */
+}
+
+.book-content img {
+  display: block;
+  margin: 1rem auto;
+}
+
+.articles {
+  max-width: 700px;
+  margin: 0 auto;
+}

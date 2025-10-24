@@ -8,10 +8,10 @@
   <title>Book Review Blog</title>
   <link rel="stylesheet" href="blog.css">
   <script src="blog.js" defer></script>
+  <script src="main.js" defer></script>
 </head>
 <body>
   <header>
-    <!-- Accessibility feature -->
     <div class="skiptocontent">
       <a href="#maincontent">Skip to main content</a>
     </div>
@@ -29,30 +29,8 @@
 
   <main id="maincontent">
     <div class="page-layout">
-      <section class="articles">
-        <article class="book">
-          <div class="book-details">
-            <p class="date">October 17, 2025</p>
-            <p class="author">Review by: Parent</p>
-          </div>
-          <div class="book-content">
-            <img src="lightnigthef.jpg" alt="Book cover for The Lightning Thief">
-            <h2>The Lightning Thief</h2>
-            <p>Rick Riordan’s *Percy Jackson and the Olympians* begins with this exciting novel full of adventure, humor, and Greek mythology. Perfect for readers 10–14.</p>
-          </div>
-        </article>
-
-        <article class="book">
-          <div class="book-details">
-            <p class="date">October 15, 2025</p>
-            <p class="author">Review by: Kid (Age 12)</p>
-          </div>
-          <div class="book-content">
-            <img src="Fablehaven image.jpg" alt="Book cover for Fablehaven">
-            <h2>Fablehaven</h2>
-            <p>Brandon Mull’s *Fablehaven* is full of magical creatures and hidden dangers. It’s great for middle school readers who love fantasy and mystery.</p>
-          </div>
-        </article>
+      <section id="articles" class="articles">
+        <!-- JavaScript will insert articles here -->
       </section>
 
       <aside class="filters">
