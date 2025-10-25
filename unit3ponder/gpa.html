@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GPA Calculator</title>
+  <style>
+    body{font-family:Segoe UI,Arial,sans-serif;padding:1rem}
+    input{width:100%;max-width:30rem;margin-top:.25rem}
+    button{margin-top:.5rem}
+    #output{margin-top:1rem;font-weight:bold}
+    #output.error{color:#b00020}
+  </style>
+</head>
+<body>
+  <h1>GPA Calculator</h1>
+  <p>Enter a comma separated list of grades.</p>
+  <p>
+    <label for="grades">Grades</label><br/>
+    <input type="text" id="grades" placeholder="e.g. A, B, C, A, F" />
+  </p>
+  <button id="submitButton">Generate</button>
+  <p id="output" aria-live="polite"></p>
+
+  <script src="gpa.js" defer></script>
+</body>
+</html>
