@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTML Forms & Favicons Study Tool</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #e0f2ff, #f9f9ff);
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      color: #1a3d7c;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      color: #333;
+      margin-top: 40px;
+      margin-bottom: 15px;
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .card {
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      padding-top: 70%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
+      backface-visibility: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 15px;
+    }
+
+    .card-front {
+      background: #0078d7;
+      color: white;
+      font-weight: bold;
+    }
+
+    .card-back {
+      background: white;
+      color: #333;
+      transform: rotateY(180deg);
+      border: 2px solid #0078d7;
+    }
+
+    footer {
+      margin-top: 40px;
+      color: #777;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>HTML Forms, Accessibility & Favicons Study Tool</h1>
+  <p>Click any card to flip and reveal the answer!</p>
+
+  <h2>🧾 HTML Forms</h2>
+  <div class="card-container">
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">How are forms used to gather information?</div>
+        <div class="card-back">Forms let users input info (like login or feedback) using fields like text boxes, checkboxes, and buttons. Data is sent to a server via GET or POST.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">Problems to watch for when creating forms?</div>
+        <div class="card-back">Missing labels, poor validation, no feedback, unclear instructions, or wrong input types can all cause issues.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">How can I style forms with CSS?</div>
+        <div class="card-back">Use CSS for spacing, colors, borders, and hover effects. Example: style inputs with padding, border-radius, and color schemes.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">Differences between type, id, and name?</div>
+        <div class="card-back"><b>type</b>: input kind<br><b>id</b>: unique for JS/CSS<br><b>name</b>: key sent to the server.</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>♿ Forms and Accessibility</h2>
+  <div class="card-container">
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">Accessibility concerns for forms?</div>
+        <div class="card-back">Use labels with “for”, clear instructions, high color contrast, keyboard access, and <code>aria</code> attributes for context.</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>🌐 Favicons</h2>
+  <div class="card-container">
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">What is a favicon?</div>
+        <div class="card-back">A small icon shown in the browser tab or bookmarks to identify a website.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">How do you add a favicon?</div>
+        <div class="card-back">Use <code>&lt;link rel="icon" href="favicon.ico" type="image/x-icon"&gt;</code> in the &lt;head&gt; section.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">Common favicon sizes?</div>
+        <div class="card-back">16×16, 32×32, 48×48, 180×180 (Apple), 512×512 (PWA).</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">Favicon vs Apple-touch-icon?</div>
+        <div class="card-back"><b>Favicon:</b> for browser tabs.<br><b>Apple-touch-icon:</b> for iOS home screen shortcuts.</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>Click a card again to flip it back ✨</footer>
+
+  <script>
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('flipped');
+      });
+    });
+  </script>
+</body>
+</html>
