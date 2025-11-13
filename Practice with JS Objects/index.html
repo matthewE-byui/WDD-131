@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Design Topics: Flexbox, Lighthouse, Meta Tags</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f9fc;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #0078d7;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+    .tabs {
+      display: flex;
+      justify-content: center;
+      background: #e1e8f0;
+    }
+    .tab {
+      padding: 1rem 2rem;
+      cursor: pointer;
+      background: #e1e8f0;
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s;
+    }
+    .tab:hover {
+      background: #d1deec;
+    }
+    .tab.active {
+      border-bottom: 3px solid #0078d7;
+      background: #fff;
+    }
+    .content {
+      display: none;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      margin-top: 2rem;
+    }
+    .content.active {
+      display: block;
+    }
+    .flashcard {
+      background: #f0f8ff;
+      border: 1px solid #bcd4e6;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .flashcard:hover {
+      background: #e3f2fd;
+    }
+    .question {
+      font-weight: bold;
+    }
+    .answer {
+      display: none;
+      margin-top: 0.5rem;
+    }
+    button.quiz {
+      margin-top: 1rem;
+      background: #0078d7;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button.quiz:hover {
+      background: #005ea3;
+    }
+    .result {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Learn Web Design Topics Interactively 🌐</h1>
+    <p>Explore Flexbox, Lighthouse, and Social Media Meta Tags</p>
+  </header>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="flexbox">Flexbox</div>
+    <div class="tab" data-tab="lighthouse">Lighthouse</div>
+    <div class="tab" data-tab="meta">Social Media Meta Tags</div>
+  </div>
+
+  <!-- FLEXBOX -->
+  <div id="flexbox" class="content active">
+    <h2>📦 CSS Flexbox</h2>
+    <div class="flashcard">
+      <div class="question">What is CSS Flexbox?</div>
+      <div class="answer">Flexbox is a layout system that allows items to align and distribute space within a container, even when their size is unknown or dynamic.</div>
+    </div>
+    <div class="flashcard">
+      <div class="question">How can I use Flexbox?</div>
+      <div class="answer">Add <code>display: flex;</code> to a container, then use properties like <code>justify-content</code> and <code>align-items</code> to control layout.</div>
+    </div>
+    <div class="flashcard">
+      <div class="question">Flexbox vs Grid?</div>
+      <div class="answer">Flexbox is 1D (rows or columns). Grid is 2D (rows and columns). Use Flexbox for simpler layouts, Grid for complex page structures.</div>
+    </div>
+
+    <button class="quiz" onclick="checkFlexboxQuiz()">Take Flexbox Quiz</button>
+    <div id="flexbox-result" class="result"></div>
+  </div>
+
+  <!-- LIGHTHOUSE -->
+  <div id="lighthouse" class="content">
+    <h2>💡 Chrome Lighthouse</h2>
+    <div class="flashcard">
+      <div class="question">What is Chrome Lighthouse?</div>
+      <div class="answer">Lighthouse is a built-in Chrome tool that audits web pages for performance, accessibility, SEO, and best practices.</div>
+    </div>
+    <div class="flashcard">
+      <div class="question">How can it optimize webpages?</div>
+      <div class="answer">It gives a score and recommendations, like reducing image sizes, improving SEO, or making your site more mobile-friendly.</div>
+    </div>
+
+    <button class="quiz" onclick="checkLighthouseQuiz()">Take Lighthouse Quiz</button>
+    <div id="lighthouse-result" class="result"></div>
+  </div>
+
+  <!-- META TAGS -->
+  <div id="meta" class="content">
+    <h2>🏷️ Social Media Meta Tags</h2>
+    <div class="flashcard">
+      <div class="question">What are social media meta tags?</div>
+      <div class="answer">Meta tags tell social platforms what title, description, and image to show when your page is shared.</div>
+    </div>
+    <div class="flashcard">
+      <div class="question">Why are they important?</div>
+      <div class="answer">They control how your content looks on social media, increasing click-throughs and engagement.</div>
+    </div>
+    <div class="flashcard">
+      <div class="question">Which meta tags should I use?</div>
+      <div class="answer">Use <code>og:title</code>, <code>og:description</code>, <code>og:image</code>, and Twitter card tags like <code>twitter:card</code>.</div>
+    </div>
+
+    <button class="quiz" onclick="checkMetaQuiz()">Take Meta Tags Quiz</button>
+    <div id="meta-result" class="result"></div>
+  </div>
+
+  <script>
+    // Tab switching
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.content');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+      });
+    });
+
+    // Flashcard flip
+    document.querySelectorAll('.flashcard').forEach(card => {
+      card.addEventListener('click', () => {
+        const answer = card.querySelector('.answer');
+        answer.style.display = (answer.style.display === 'block') ? 'none' : 'block';
+      });
+    });
+
+    // Quizzes
+    function checkFlexboxQuiz() {
+      const answer = prompt("Is Flexbox 1D or 2D?");
+      const result = document.getElementById("flexbox-result");
+      if (answer && answer.toLowerCase().includes("1d")) {
+        result.textContent = "✅ Correct! Flexbox is a 1D layout system.";
+      } else {
+        result.textContent = "❌ Not quite. Flexbox handles one dimension — row OR column.";
+      }
+    }
+
+    function checkLighthouseQuiz() {
+      const answer = prompt("What does Lighthouse help measure?");
+      const result = document.getElementById("lighthouse-result");
+      if (answer && answer.toLowerCase().includes("performance")) {
+        result.textContent = "✅ Yes! It measures performance, SEO, accessibility, and more.";
+      } else {
+        result.textContent = "❌ Hint: Think about website performance and SEO.";
+      }
+    }
+
+    function checkMetaQuiz() {
+      const answer = prompt("What tag controls how a link looks on Facebook?");
+      const result = document.getElementById("meta-result");
+      if (answer && answer.toLowerCase().includes("og")) {
+        result.textContent = "✅ Correct! Open Graph (og:) tags handle that.";
+      } else {
+        result.textContent = "❌ It's the 'og:' (Open Graph) tags.";
+      }
+    }
+  </script>
+</body>
+</html>
