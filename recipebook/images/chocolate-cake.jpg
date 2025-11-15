@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150">
+  <circle cx="100" cy="75" r="45" fill="#8B4513"/>
+  <ellipse cx="100" cy="75" rx="40" ry="38" fill="#A0522D"/>
+  <circle cx="85" cy="65" r="4" fill="#FFD700"/>
+  <circle cx="115" cy="70" r="3" fill="#FFD700"/>
+  <text x="100" y="130" font-size="12" fill="#333" text-anchor="middle" font-weight="bold">Chocolate</text>
+</svg>
