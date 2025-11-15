@@ -52,14 +52,14 @@ main{padding:16px;flex:1}
 /* Recipes list — mobile stacked cards */
 .recipes-list{display:flex;flex-direction:column;gap:20px}
 .recipe-card{display:flex;flex-direction:column;border:1px solid #e5e5e5;padding:12px;border-radius:8px;background:#fafafa;overflow:hidden}
-.recipe-figure{width:100%;overflow:hidden;border-radius:6px}
-.recipe-figure img{width:100%;height:auto;display:block;max-width:100%}
-.recipe-body{padding-top:10px;overflow:hidden}
+.recipe-figure{width:100%;overflow:hidden;border-radius:6px;height:200px;aspect-ratio:4/3}
+.recipe-figure img{width:100%;height:100%;display:block;object-fit:cover}
+.recipe-body{padding-top:10px;overflow:hidden;max-height:300px;display:flex;flex-direction:column}
 .tags{display:flex;gap:8px;margin-bottom:6px;flex-wrap:wrap;overflow:hidden}
 .tags button{background:#fff;border:1px solid #ccc;padding:6px 10px;border-radius:4px;cursor:pointer;font-size:0.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 .recipe-title{font-family:var(--heading-font);margin:6px 0;font-size:1.2rem;overflow:hidden;text-overflow:ellipsis;white-space:normal;word-break:break-word}
 .rating{display:inline-block;margin-bottom:8px}
-.description{color:var(--muted);margin-top:8px;display:none;overflow:hidden;text-overflow:ellipsis;word-break:break-word}
+.description{color:var(--muted);margin-top:8px;display:none;overflow:hidden;word-break:break-word;max-height:80px;line-height:1.4}
 
 
 /* Footer */
@@ -75,9 +75,9 @@ main{padding:16px;flex:1}
 @media (min-width:600px){
 .recipes-list{flex-direction:row;flex-wrap:wrap;gap:20px}
 .recipe-card{flex-direction:row;width:100%;max-width:100%;gap:16px;align-items:flex-start;overflow:hidden}
-.recipe-figure{width:48%;flex:0 0 48%;height:200px;overflow:hidden}
+.recipe-figure{width:48%;flex:0 0 48%;height:200px;overflow:hidden;aspect-ratio:4/3;border-radius:6px}
 .recipe-figure img{width:100%;height:100%;object-fit:cover;display:block}
-.recipe-body{width:52%;flex:0 0 52%;overflow:hidden}
+.recipe-body{width:52%;flex:0 0 52%;overflow:hidden;max-height:200px;display:flex;flex-direction:column}
 .tags{overflow:hidden}
 .description{display:block;overflow:hidden}
 }
