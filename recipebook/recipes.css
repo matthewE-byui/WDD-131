@@ -1,0 +1,90 @@
+:root{
+--primary-color:#1B98E0;
+--secondary-color:#F2F2F2;
+--accent:#59C3C3;
+--text:#222;
+--muted:#666;
+--max-width:1100px;
+--gap:16px;
+--radius:6px;
+--heading-font: 'Cabin', Arial, sans-serif;
+--body-font: Arial, Helvetica, sans-serif;
+}
+
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+margin:0;
+font-family:var(--body-font);
+color:var(--text);
+background:#fff;
+line-height:1.4;
+}
+
+img {
+  max-width: 100%;
+}
+
+.site-wrapper{max-width:var(--max-width);margin:0 auto;display:flex;flex-direction:column;min-height:100vh}
+
+
+/* Header */
+.site-header{background:var(--secondary-color);padding:12px 16px;border-bottom:1px solid #ccc}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:48px;height:auto}
+.brand h1{font-family:var(--heading-font);font-size:1.3rem;margin:0}
+
+
+/* Main layout */
+main{padding:16px;flex:1}
+
+
+/* Search area */
+.search-form{background:transparent}
+.search-row{display:flex;gap:8px;align-items:center}
+.search-row input[type='search']{flex:1;padding:10px;border:1px solid #ccc;border-radius:4px;font-size:1rem}
+.search-row button{background:transparent;border:1px solid #ccc;padding:8px;border-radius:4px;display:inline-flex;align-items:center;justify-content:center}
+.search-row img{width:20px;height:20px}
+.label{display:block;margin-bottom:8px;color:var(--muted)}
+
+
+/* Recipes list — mobile stacked cards */
+.recipes-list{display:flex;flex-direction:column;gap:20px}
+.recipe-card{display:flex;flex-direction:column;border:1px solid #e5e5e5;padding:12px;border-radius:8px;background:#fafafa}
+.recipe-figure{width:100%;overflow:hidden;border-radius:6px}
+.recipe-figure img{width:100%;height:auto;display:block}
+.recipe-body{padding-top:10px}
+.tags{display:flex;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+.tags button{background:#fff;border:1px solid #ccc;padding:6px 10px;border-radius:4px;cursor:pointer;font-size:0.9rem}
+.recipe-title{font-family:var(--heading-font);margin:6px 0;font-size:1.2rem}
+.rating{display:inline-block;margin-bottom:8px}
+.description{color:var(--muted);margin-top:8px;display:none}
+
+
+/* Footer */
+.site-footer{display:flex;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid #ccc;background:var(--secondary-color);flex-wrap:wrap;justify-content:center}
+.site-footer .social{margin-left:auto;display:flex;gap:8px}
+.site-footer img{width:28px;height:28px}
+.attribution{font-size:0.6em;color:var(--muted);margin:0}
+.copyright{margin:0;font-size:0.9rem}
+.visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+
+
+/* Tablet layout */
+@media (min-width:600px){
+.recipes-list{flex-direction:row;flex-wrap:wrap;gap:20px}
+.recipe-card{flex-direction:row;width:100%;max-width:100%;gap:16px;align-items:flex-start}
+.recipe-figure{width:48%;flex:0 0 48%;height:200px}
+.recipe-figure img{width:100%;height:100%;object-fit:cover}
+.recipe-body{width:52%;flex:0 0 52%}
+.description{display:block}
+}
+
+
+@media (min-width:960px){
+.site-wrapper{padding:12px}
+main{padding:24px}
+.brand h1{font-size:1.6rem}
+.recipe-card{gap:20px}
+}

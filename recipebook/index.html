@@ -1,0 +1,81 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Recipe Book — Simple Recipes</title>
+<meta name="description" content="Browse simple, delicious recipes — accessible, responsive recipe gallery with search and tags.">
+
+
+<!-- Open Graph / Social Meta -->
+<meta property="og:title" content="Recipe Book — Simple Recipes">
+<meta property="og:type" content="website">
+<meta property="og:description" content="Browse simple, delicious recipes — accessible, responsive recipe gallery with search and tags.">
+<meta property="og:image" content="images/apple-crisp.jpg">
+<meta property="og:url" content="https://your-site.example/index.html">
+<meta name="twitter:card" content="summary_large_image">
+
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabin:wght@500;700&family=Arial:wght@400;700&display=swap" rel="stylesheet">
+
+
+<!-- CSS -->
+<link rel="stylesheet" href="recipes.css">
+</head>
+<body>
+<div class="site-wrapper">
+<header class="site-header">
+<div class="brand">
+<img src="images/ovenlogo.jpg" alt="Recipe Book logo" class="logo">
+<h1>Recipe Book</h1>
+</div>
+</header>
+
+
+<main>
+<!-- Search area -->
+<section class="search-area" aria-labelledby="search-heading">
+<h2 id="search-heading" class="visually-hidden">Find a recipe</h2>
+<form id="search-form" class="search-form" role="search" aria-label="Search recipes">
+<label for="search-input" class="label">Find a Recipe!</label>
+<div class="search-row">
+<input id="search-input" type="search" name="q" placeholder="Search by title, ingredient or tag" aria-label="Search recipes">
+<button type="submit" aria-label="Search">
+<img src="images/search_icon.svg" alt="search">
+</button>
+</div>
+</form>
+</section>
+
+
+<!-- Recipes list (rendered by JS) -->
+<section id="recipes-list" class="recipes-list" aria-live="polite">
+<!-- JS will inject recipe cards here -->
+</section>
+</main>
+
+
+<footer class="site-footer">
+<p class="copyright">©2023</p>
+
+
+<p class="small attribution">
+<a href="https://www.flaticon.com/free-icons/recipe" title="recipe icons">Recipe icons created by Freepik - Flaticon</a>
+</p>
+
+
+<div class="social">
+<!-- Social media icons provided under CC from https://www.iconfinder.com/AlfredoCreates -->
+<a href="#" aria-label="Instagram"><img src="images/instagram_icon.svg" alt="instagram icon"></a>
+<a href="#" aria-label="YouTube"><img src="images/youtube_icon.svg" alt="youtube icon"></a>
+<a href="#" aria-label="Pinterest"><img src="images/pinterest_icon.svg" alt="pinterest icon"></a>
+</div>
+</footer>
+</div>
+
+
+<!-- Main script (module) -->
+<script type="module" src="main.js"></script>
+</body>
+</html>
