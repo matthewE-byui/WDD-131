@@ -142,19 +142,20 @@ main{padding:16px;flex:1}
 /* rating */
 .rating{display:inline-block;margin-bottom:8px}
 
-/* DESCRIPTION — collapsible */
-.description{
-  color:var(--muted);
-  margin-top:8px;
-  line-height:1.4;
-  white-space:normal;
-  overflow:hidden;
-  max-height:4.2em; /* ~3 lines */
-  transition:max-height 0.3s ease;
+/* DESCRIPTION — collapsible (default: MOBILE = 2 lines) */
+.description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  color: var(--muted);
+  margin-top: 8px;
+  line-height: 1.4;
 }
 
-.description.expanded{
-  max-height:2000px;
+.description.expanded {
+  -webkit-line-clamp: unset;
+  max-height: none;
 }
 
 .show-more-btn{
@@ -205,10 +206,7 @@ main{padding:16px;flex:1}
     align-items:flex-start;
   }
 
-  .recipe-figure{
-    width:48%;
-    flex:0 0 48%;
-  }
+
 
   .recipe-body{
     width:52%;
@@ -227,3 +225,4 @@ main{padding:16px;flex:1}
   .brand h1{font-size:1.6rem}
   .recipe-card{gap:20px}
 }
+
