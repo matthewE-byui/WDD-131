@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Interactive: SEO + JavaScript Sorting & Filtering</title>
+  <style>
+    :root{font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;}
+    body{margin:0;background:#0f172a;color:#e6eef8;line-height:1.45}
+    header{background:linear-gradient(90deg,#0ea5a9,#6366f1);padding:28px 26px;border-bottom:3px solid rgba(255,255,255,0.06)}
+    .wrap{max-width:980px;margin:22px auto;padding:20px}
+    h1{margin:0 0 6px;font-size:20px}
+    p.lead{opacity:.95;margin:0 0 8px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:16px;border-radius:12px;margin-bottom:18px;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+    .two{display:grid;grid-template-columns:1fr 420px;gap:18px}
+    label{display:block;font-size:13px;margin-bottom:6px;color:#cfe7ff}
+    input,select,button,textarea{font-size:14px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit;width:100%}
+    .controls{display:flex;gap:10px}
+    button.primary{background:#06b6d4;color:#04202b;border:none;padding:10px 12px;cursor:pointer}
+    pre{background:rgba(0,0,0,0.35);padding:12px;border-radius:8px;overflow:auto}
+    .list{background:rgba(255,255,255,0.02);padding:12px;border-radius:8px;min-height:80px}
+    .row{display:flex;gap:10px}
+    footer{opacity:.7;padding:18px;text-align:center;font-size:13px}
+    .hint{font-size:13px;color:#bfe7ff}
+    .chip{display:inline-block;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.03);margin-right:8px}
+    @media (max-width:900px){.two{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Interactive Guide — SEO basics & JavaScript sorting/filtering</h1>
+      <p class="lead">Hands-on playground: read short explanations, tweak example arrays/objects, and run sorting & filtering. Save the file and open it in your browser to experiment.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <h2>What is SEO (Search Engine Optimization)?</h2>
+      <p>SEO is the practice of improving a webpage so search engines understand it and rank it higher for relevant searches. It has three main pillars:</p>
+      <ul>
+        <li><strong>Technical:</strong> fast site, mobile-friendly, correct HTML (meta tags, structured data)</li>
+        <li><strong>On-page:</strong> clear headings, useful content, keywords placed naturally, accessible images with alt text</li>
+        <li><strong>Off-page:</strong> reputation signals such as backlinks from reputable sites</li>
+      </ul>
+      <p class="hint">Quick tips you can apply to any page: use a descriptive title tag, an explanatory meta description, semantic headings (H1/H2), optimize images, and make URLs readable.</p>
+    </section>
+
+    <div class="two">
+      <section class="card" aria-labelledby="js-title">
+        <h2 id="js-title">JavaScript: sort() and filter() — hands-on</h2>
+        <p>Use the controls on the right to transform arrays. You'll see the original and the result. The examples cover primitives (numbers/strings) and arrays of objects.</p>
+
+        <div class="row" style="gap:12px;margin-bottom:12px">
+          <div style="flex:1">
+            <label>Editable array (JSON)</label>
+            <textarea id="arrayInput" rows="6">[5, 1, 10, 3, 8]</textarea>
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <button class="primary" id="doSort">Sort</button>
+              <button id="doFilter">Filter (&gt; value)</button>
+              <button id="resetArr">Reset</button>
+            </div>
+          </div>
+
+          <div style="width:420px">
+            <label>Options</label>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+              <select id="sortMode">
+                <option value="asc">Sort ascending</option>
+                <option value="desc">Sort descending</option>
+                <option value="lex">Lexicographic (strings)</option>
+              </select>
+              <input id="filterValue" placeholder="Filter value (e.g. 4)" />
+            </div>
+
+            <hr style="margin:12px 0;border:none;border-top:1px solid rgba(255,255,255,0.04)" />
+
+            <label>Result</label>
+            <div class="list" id="arrayResult">[ ... ]</div>
+            <p class="hint">Note: JavaScript's default sort() converts values to strings. Use compare functions for numeric sorts.</p>
+          </div>
+        </div>
+
+        <hr />
+
+        <h3>Objects: sort by key & filter by property</h3>
+        <div class="row">
+          <div style="flex:1">
+            <label>Array of objects (JSON)</label>
+            <textarea id="objInput" rows="6">[{"name":"Alice","score":82},{"name":"Bob","score":95},{"name":"Cleo","score":73},{"name":"Drew","score":95}]</textarea>
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <button class="primary" id="sortObj">Sort objects</button>
+              <button id="filterObj">Filter objects</button>
+              <button id="resetObj">Reset</button>
+            </div>
+          </div>
+
+          <div style="width:420px">
+            <label>Options</label>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+              <select id="objKey">
+                <option value="name">name</option>
+                <option value="score">score</option>
+              </select>
+              <select id="objOrder">
+                <option value="asc">ascending</option>
+                <option value="desc">descending</option>
+              </select>
+            </div>
+            <input id="objFilterVal" placeholder="Filter property value (e.g. 90 or 'A')" />
+            <label style="margin-top:8px">Result</label>
+            <div class="list" id="objResult">[ ... ]</div>
+            <p class="hint">Tip: When sorting strings, use localeCompare for correct alphabetical order in most languages.</p>
+          </div>
+        </div>
+
+      </section>
+
+      <aside class="card">
+        <h3>Quick reference</h3>
+        <pre>// numeric sort ascending
+arr.sort((a,b)=>a-b)
+
+// numeric sort descending
+arr.sort((a,b)=>b-a)
+
+// string sort (case-insensitive)
+arr.sort((a,b)=>a.localeCompare(b))
+
+// filter values > n
+arr.filter(x => x > n)
+
+// sort objects by key
+arr.sort((a,b)=>a.key>b.key?1:-1)
+
+// filter objects by property
+arr.filter(o => o.score >= 90)
+</pre>
+
+        <h3>Mini-quiz</h3>
+        <p>Q: What happens if you call <code>['10','2','1'].sort()</code> ?</p>
+        <div class="controls" style="margin-top:8px">
+          <button id="quizA">They sort numerically</button>
+          <button id="quizB">They sort as strings ("1","10","2")</button>
+        </div>
+        <div id="quizResult" style="margin-top:8px"></div>
+
+        <hr />
+        <p class="hint">Want the code? Save this file as <code>seo_js_playground.html</code> and open it in your browser. You can paste different arrays, try the buttons, and read the short SEO tips above.</p>
+      </aside>
+    </div>
+
+    <section class="card">
+      <h2>Common SEO checklist (apply to any webpage)</h2>
+      <ul>
+        <li>Title tag (unique, ~50–60 chars) and meta description (up to ~155 chars) that describe page content.</li>
+        <li>H1 for main topic, H2/H3 for subsections; include target keywords naturally.</li>
+        <li>Images: compress, use descriptive filenames and <code>alt</code> text.</li>
+        <li>Mobile-friendly — responsive layout and fast loading. Use network and Lighthouse tools to test.</li>
+        <li>Use structured data (JSON-LD) for rich snippets where relevant (articles, products, events).</li>
+        <li>Readable URLs (example: <code>/blog/how-to-sort-arrays-js</code>).</li>
+      </ul>
+      <p class="hint">If you want, I can add an example <code>&lt;title&gt;</code> and JSON-LD snippet for a specific page — tell me the page type (article, product, recipe, event).</p>
+    </section>
+
+  </main>
+
+  <footer>
+    Built for learning — modify freely. Ask me to add more examples (stable sort, custom comparator examples, debounce for live-filtering, or a visualization).
+  </footer>
+
+  <script>
+    // Utility: safely parse JSON with fallback
+    function safeParse(text, fallback){try{return JSON.parse(text)}catch(e){return fallback}}
+
+    const arrayInput = document.getElementById('arrayInput')
+    const arrayResult = document.getElementById('arrayResult')
+    const sortMode = document.getElementById('sortMode')
+    const filterValue = document.getElementById('filterValue')
+
+    const objInput = document.getElementById('objInput')
+    const objResult = document.getElementById('objResult')
+    const objKey = document.getElementById('objKey')
+    const objOrder = document.getElementById('objOrder')
+    const objFilterVal = document.getElementById('objFilterVal')
+
+    const initialArrText = arrayInput.value
+    const initialObjText = objInput.value
+
+    function render(el, value){el.textContent = JSON.stringify(value, null, 2)}
+
+    // Default render
+    render(arrayResult, safeParse(arrayInput.value, []))
+    render(objResult, safeParse(objInput.value, []))
+
+    document.getElementById('doSort').addEventListener('click', ()=>{
+      let arr = safeParse(arrayInput.value, [])
+      if(!Array.isArray(arr)){alert('Input must be a JSON array');return}
+      const mode = sortMode.value
+      // decide numeric or string
+      const areAllNumbers = arr.every(x => typeof x === 'number' || (!isNaN(x) && x !== null && x !== ''))
+      // normalize string numbers into numbers only for numeric sorts
+      if(mode==='asc' || mode==='desc'){
+        // convert strings that look like numbers into numbers
+        arr = arr.map(x => (typeof x==='string' && !isNaN(x))?Number(x):x)
+        if(mode==='asc') arr.sort((a,b)=> (a-b))
+        else arr.sort((a,b)=> (b-a))
+      } else {
+        // lexicographic
+        arr.sort((a,b)=> String(a).localeCompare(String(b)))
+      }
+      render(arrayResult, arr)
+    })
+
+    document.getElementById('doFilter').addEventListener('click', ()=>{
+      let arr = safeParse(arrayInput.value, [])
+      if(!Array.isArray(arr)){alert('Input must be a JSON array');return}
+      const fv = filterValue.value.trim()
+      if(fv===''){alert('Enter a filter value');return}
+      const num = Number(fv)
+      const useNumber = fv!=='' && !isNaN(num)
+      const filtered = arr.filter(x => useNumber ? (Number(x) > num) : (String(x).includes(fv)))
+      render(arrayResult, filtered)
+    })
+
+    document.getElementById('resetArr').addEventListener('click', ()=>{arrayInput.value=initialArrText;render(arrayResult, safeParse(initialArrText, []))})
+
+    // Objects
+    document.getElementById('sortObj').addEventListener('click', ()=>{
+      let arr = safeParse(objInput.value, [])
+      if(!Array.isArray(arr)){alert('Input must be a JSON array');return}
+      const key = objKey.value
+      const order = objOrder.value
+      arr.sort((a,b)=>{
+        const va = a[key]
+        const vb = b[key]
+        // numbers preferred
+        if(typeof va === 'number' && typeof vb === 'number') return order==='asc'?va-vb:vb-va
+        if(typeof va === 'string' && typeof vb === 'string') return order==='asc'?va.localeCompare(vb):vb.localeCompare(va)
+        // fallback to string compare of JSON
+        return order==='asc'?String(va).localeCompare(String(vb)):String(vb).localeCompare(String(va))
+      })
+      render(objResult, arr)
+    })
+
+    document.getElementById('filterObj').addEventListener('click', ()=>{
+      let arr = safeParse(objInput.value, [])
+      const key = objKey.value
+      const fv = objFilterVal.value.trim()
+      if(fv===''){alert('Enter a filter value');return}
+      const maybeNum = Number(fv)
+      const useNumber = fv!=='' && !isNaN(maybeNum)
+      const filtered = arr.filter(o => {
+        if(o==null) return false
+        const v = o[key]
+        if(v==null) return false
+        return useNumber? Number(v) >= maybeNum : String(v).toLowerCase().includes(fv.toLowerCase())
+      })
+      render(objResult, filtered)
+    })
+
+    document.getElementById('resetObj').addEventListener('click', ()=>{objInput.value=initialObjText;render(objResult, safeParse(initialObjText, []))})
+
+    // quiz buttons
+    document.getElementById('quizA').addEventListener('click', ()=>{document.getElementById('quizResult').textContent='No — default sort() converts items to strings and sorts lexicographically.'})
+    document.getElementById('quizB').addEventListener('click', ()=>{document.getElementById('quizResult').textContent='Correct — you get ["1","10","2"] when using default sort() on those strings.'})
+
+  </script>
+</body>
+</html>
