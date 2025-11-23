@@ -12,7 +12,7 @@ description: "A simple, cozy apple crisp with cinnamon and a crunchy oat topping
 {
 id: "pasta-primavera",
 title: "Pasta Primavera",
-image: "images/Pasta Primavera.jpg",
+image: "images/pasta-primavera.jpg",
 tags: ["vegetarian","dinner"],
 rating: 5,
 reviews: 89,
@@ -21,7 +21,7 @@ description: "Colorful vegetables tossed with pasta and a light lemon-garlic sau
 {
 id: "chocolate-cake",
 title: "Chocolate Cake",
-image: "images/Chocolate Cake.jpg",
+image: "images/chocolate-cake.jpg",
 tags: ["dessert","baking"],
 rating: 3,
 reviews: 48,

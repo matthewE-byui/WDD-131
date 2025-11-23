@@ -113,6 +113,8 @@ main{padding:16px;flex:1}
   padding-top:10px;
   display:flex;
   flex-direction:column;
+  /* allow the text column to shrink correctly when in row layout */
+  min-width:0;
 }
 
 /* tags */
@@ -146,11 +148,12 @@ main{padding:16px;flex:1}
 .description {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 2; /* mobile: 2 lines */
   overflow: hidden;
   color: var(--muted);
   margin-top: 8px;
   line-height: 1.4;
+  word-break: break-word;
 }
 
 .description.expanded {
@@ -158,6 +161,7 @@ main{padding:16px;flex:1}
   max-height: none;
 }
 
+/* Show-more button */
 .show-more-btn{
   margin-top:4px;
   padding:4px 8px;
@@ -191,7 +195,7 @@ main{padding:16px;flex:1}
   font-size:0.9rem;
 }
 
-/* Tablet */
+/* Tablet: use fixed image width and let text flex */
 @media (min-width:600px){
   .recipes-list{
     flex-direction:row;
@@ -206,23 +210,41 @@ main{padding:16px;flex:1}
     align-items:flex-start;
   }
 
-
-
-  .recipe-body{
-    width:52%;
-    flex:0 0 52%;
+  /* Fixed image column prevents the text column from being squeezed too narrow */
+  .recipe-figure{
+    width:300px;
+    flex:0 0 300px;
+    height:200px;
   }
 
+  /* text column takes remaining space and is allowed to shrink (min-width:0 prevents overflow) */
+  .recipe-body{
+    flex:1;
+    width:auto;
+    min-width:0;
+  }
+
+  /* Tablet: allow 3-line preview before Show More */
   .description{
-    max-height:4.2em; /* still 3-line preview */
+    -webkit-line-clamp: 3;
   }
 }
 
-/* Desktop */
+/* Desktop: slightly larger image, clamp to 2 lines for compact cards */
 @media (min-width:960px){
   .site-wrapper{padding:12px}
   main{padding:24px}
   .brand h1{font-size:1.6rem}
   .recipe-card{gap:20px}
-}
 
+  .recipe-figure{
+    width:340px;
+    flex:0 0 340px;
+    height:220px;
+  }
+
+  /* Desktop clamp (2 lines) keeps cards compact on wide screens */
+  .description{
+    -webkit-line-clamp: 2;
+  }
+}

@@ -1,4 +1,4 @@
-// main.js — renders recipes and handles search + tags
+// main.js — renders recipes and handles search + tags (with Show More toggle)
 
 import { recipes } from './recipes.mjs';
 
@@ -28,6 +28,33 @@ function createRating(rating) {
   }
   
   return span;
+}
+
+// Add show-more toggle behavior: shows button only if text overflows its clamped height
+function attachShowMore(descEl, btnEl) {
+  // measure overflow after layout (descEl must be in DOM)
+  function updateButtonVisibility() {
+    // If the element's scrollHeight is greater than its clientHeight, it overflows
+    const isOverflowing = descEl.scrollHeight > descEl.clientHeight + 1; // tolerance
+    btnEl.style.display = isOverflowing ? 'inline-block' : 'none';
+  }
+
+  // toggle expand/collapse
+  btnEl.addEventListener('click', () => {
+    const expanded = descEl.classList.toggle('expanded');
+    btnEl.textContent = expanded ? 'Show Less' : 'Show More';
+  });
+
+  // initial check after next frame (ensures styles applied)
+  requestAnimationFrame(updateButtonVisibility);
+
+  // also update when window resizes (clamp height changes)
+  const ro = new ResizeObserver(() => {
+    updateButtonVisibility();
+  });
+  ro.observe(descEl);
+  // store observer on element so it can be disconnected if needed later
+  descEl._showMoreObserver = ro;
 }
 
 // Render recipes
@@ -81,14 +108,28 @@ function render(recipesToRender) {
     desc.className = 'description';
     desc.textContent = r.description;
 
+    // Show More button
+    const showBtn = document.createElement('button');
+    showBtn.type = 'button';
+    showBtn.className = 'show-more-btn';
+    showBtn.textContent = 'Show More';
+    showBtn.style.display = 'none'; // default hidden; attachShowMore will show if needed
+
     body.appendChild(tagsWrap);
     body.appendChild(h2);
     body.appendChild(meta);
     body.appendChild(desc);
+    body.appendChild(showBtn);
 
     card.appendChild(fig);
     card.appendChild(body);
     listEl.appendChild(card);
+
+    // After element is inserted, attach Show More logic (measures overflow)
+    // Use requestAnimationFrame to ensure browser has applied layout/styles
+    requestAnimationFrame(() => {
+      attachShowMore(desc, showBtn);
+    });
   }
 }
 
@@ -102,6 +143,9 @@ function handleSearch(query) {
     const inDesc = r.description.toLowerCase().includes(query);
     return inTitle || inTags || inDesc;
   });
+
+  // sort alphabetically by title
+  out.sort((a, b) => a.title.localeCompare(b.title));
   render(out);
 }
 
