@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gallery — Trailmakers Builds Hub</title>
+<link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+<header class="site-header">
+<div class="container">
+<img src="images/logo.png" alt="Trailmakers Builds Hub" class="logo">
+<nav>
+<a href="index.html">Home</a>
+<a href="gallery.html">Gallery</a>
+</nav>
+</div>
+</header>
+
+
+<main class="container">
+<section class="controls">
+<input id="search" type="search" placeholder="Search builds..." aria-label="Search builds">
+<select id="filter-category">
+<option value="all">All Categories</option>
+</select>
+<select id="sort-by">
+<option value="name">Name</option>
+<option value="speed">Top Speed</option>
+<option value="difficulty">Difficulty</option>
+</select>
+</section>
+
+
+<section class="gallery-grid">
+<div id="build-grid" class="grid"></div>
+</section>
+</main>
+
+
+<footer class="site-footer">
+<div class="container">
+<p>&copy; <span id="year-gallery"></span> Trailmakers Builds Hub</p>
+</div>
+</footer>
+
+
+<script type="module" src="scripts/main.js"></script>
+</body>
+</html>
