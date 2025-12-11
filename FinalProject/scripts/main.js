@@ -34,6 +34,7 @@ builds.slice(0,4).forEach(b => previewGrid.appendChild(createBuildCard(b)));
 // gallery page setup
 const buildGrid = document.getElementById('build-grid');
 const filterEl = document.getElementById('filter-category');
+const tagEl = document.getElementById('filter-tag');
 const sortEl = document.getElementById('sort-by');
 const searchEl = document.getElementById('search');
 
@@ -48,6 +49,13 @@ categories.forEach(c => {
 const o = document.createElement('option'); o.value = c; o.textContent = capitalize(c); filterEl.appendChild(o);
 });
 
+// populate tag options (from builds.tags)
+if(tagEl){
+	const tagSet = Array.from(new Set(builds.flatMap(b => b.tags || [])));
+	const allT = document.createElement('option'); allT.value = 'all'; allT.textContent = 'All Tags'; tagEl.appendChild(allT);
+	tagSet.forEach(t => { const o = document.createElement('option'); o.value = t; o.textContent = t; tagEl.appendChild(o); });
+}
+
 
 function renderGrid(items){
 buildGrid.innerHTML = '';
@@ -60,6 +68,8 @@ const q = searchEl?.value.trim().toLowerCase() || '';
 let list = builds.slice();
 const cat = filterEl.value;
 if(cat && cat !== 'all') list = list.filter(b => b.category === cat);
+const tag = tagEl?.value;
+if(tag && tag !== 'all') list = list.filter(b => (b.tags || []).includes(tag));
 if(q) list = list.filter(b => (b.name + ' ' + b.description).toLowerCase().includes(q));
 const sortBy = sortEl.value;
 if(sortBy === 'speed') list.sort((a,b)=> b.speed - a.speed);
