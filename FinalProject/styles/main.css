@@ -73,3 +73,25 @@ section{margin-top:28px}
 
 .btn:focus{outline:2px solid var(--accent)}
 .view-btn{background:linear-gradient(90deg,var(--accent),var(--primary));color:#001}
+
+/* Social feed styles */
+.post{background:var(--card);padding:12px;border-radius:10px;color:var(--text)}
+.post + .post{margin-top:12px}
+.post-head{display:flex;gap:12px;align-items:center}
+.avatar{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.04)}
+.post-meta small{color:#9aa3ab}
+.post-body{margin-top:8px;color:#dbe6ea}
+.post-actions{display:flex;gap:8px;margin-top:10px}
+.post .btn{padding:6px 10px;border-radius:8px}
+.post .post-image{max-width:100%;border-radius:8px;margin-top:8px}
+.comments{margin-top:8px;background:rgba(0,0,0,0.05);padding:8px;border-radius:8px}
+.comment{padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.02)}
+.comment:last-child{border-bottom:0}
+.comment small{color:#9aa3ab;margin-left:8px}
+.preview{opacity:0.9;border:1px dashed rgba(255,255,255,0.03)}
+
+/* Responsive tweaks */
+@media (max-width:700px){
+	.avatar{width:48px;height:48px}
+	.controls{flex-direction:column}
+}

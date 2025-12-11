@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Posts — Trailmakers Builds Hub</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <style>
+    .post-form{display:grid;gap:8px;grid-template-columns:1fr;align-items:start}
+    .post-list{display:grid;gap:12px;margin-top:16px}
+    .post{padding:12px;border-radius:8px;background:rgba(255,255,255,0.03)}
+    .post img{max-width:220px;border-radius:6px;display:block;margin-top:8px}
+    .post-actions{margin-top:8px;display:flex;gap:8px}
+  </style>
+</head>
+<body>
+<header class="site-header">
+<div class="container">
+<img src="images/logo.png" alt="Trailmakers Builds Hub" class="logo">
+<nav>
+<a href="index.html">Home</a>
+<a href="gallery.html">Gallery</a>
+<a href="posts.html">Posts</a>
+ </nav>
+</div>
+</header>
+
+<main class="container">
+<h1>Posts</h1>
+
+<section class="card">
+  <h2>Create a Post</h2>
+  <form id="post-form" class="post-form" novalidate>
+    <div style="display:flex;gap:8px;align-items:center">
+      <input id="username" name="username" placeholder="Your name" required style="flex:1">
+      <input id="avatar" name="avatar" placeholder="Avatar URL (optional)" style="width:260px">
+    </div>
+    <input id="title" name="title" placeholder="Title (optional)">
+    <textarea id="content" name="content" rows="4" placeholder="Share a build, tip, or image..." required></textarea>
+    <input id="image" name="image" placeholder="Image URL (optional)">
+    <div style="display:flex;gap:8px;align-items:center">
+      <button id="save" class="btn" type="submit">Post</button>
+      <button id="cancel" class="btn" type="button">Clear</button>
+      <button id="demo-post" class="btn" type="button">Demo Post</button>
+      <div id="char-count" style="margin-left:auto;color:#9aa3ab">0</div>
+    </div>
+    <input type="hidden" id="post-id">
+  </form>
+  <div id="composer-preview" style="margin-top:12px"></div>
+</section>
+
+<section class="card">
+  <h2>Your Posts</h2>
+  <div id="posts" class="post-list"></div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+<div class="container">
+<p>&copy; <span id="year"></span> Trailmakers Builds Hub</p>
+</div>
+</footer>
+
+<script type="module" src="scripts/posts.js"></script>
+</body>
+</html>

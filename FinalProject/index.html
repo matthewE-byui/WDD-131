@@ -21,7 +21,10 @@
 <section class="hero">
 <h1>Trailmakers Builds Hub</h1>
 <p class="lead">Custom vehicles, guides, and engineering inspiration — built and tested in Trailmakers.</p>
-<a class="btn" href="gallery.html">Explore the Gallery</a>
+<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+	<a class="btn" href="gallery.html">Explore the Gallery</a>
+	<a class="btn" href="posts.html">View Posts</a>
+</div>
 </section>
 
 
@@ -36,6 +39,13 @@
 <section class="about">
 <h2>About the Creator</h2>
 <p>Hi — I build inventive and mechanically interesting creations in Trailmakers. I enjoy combining engineering principles with creative design to push what’s possible inside the game. This site documents builds with screenshots, stats, and download notes.</p>
+</section>
+
+
+<section class="latest-posts">
+<h2>Latest Posts</h2>
+<div id="posts-preview" class="grid"></div>
+<p><a href="posts.html">View all posts</a></p>
 </section>
 
 
@@ -55,5 +65,6 @@
 
 
 <script type="module" src="scripts/main.js"></script>
+<script src="scripts/posts-preview.js"></script>
 </body>
 </html>
